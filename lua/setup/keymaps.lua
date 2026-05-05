@@ -28,7 +28,6 @@ vim.keymap.set({ 'n', 't' }, '<leader>l', ':Lazy<Cr>', { silent = true, desc = '
 
 -- Float Terminal
 vim.keymap.set({ 'n' }, '<leader>tt', ':FloatermToggle<Cr>', { silent = true, desc = '[T]oggle [T]erminal' })
-vim.keymap.set({ 'n' }, '<leader>tx', ':FloattyToggle<Cr>i', { silent = true, desc = '[T]oggle [X]Terminal' })
 
 -- Salir
 vim.keymap.set('n', '<C-x>', ':qa<CR>', { noremap = true, silent = true, desc = 'E[x]it Neovim' })
