@@ -1,5 +1,3 @@
--- [[ Install `lazy.nvim` plugin manager ]]
---    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
@@ -13,71 +11,12 @@ end
 local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 
--- [[ Configure and install plugins ]]
---
---  To check the current status of your plugins, run
---    :Lazy
---
---  You can press `?` in this menu for help. Use `:q` to close the window
---
---  To update plugins you can run
---    :Lazy update
---
--- NOTE: Here is where you install your plugins.
 require('lazy').setup(
   {
 
-    -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
-    'NMAC427/guess-indent.nvim', -- Detect tabstop and shiftwidth automatically
-
-    -- NOTE: Plugins can also be added by using a table,
-    -- with the first argument being the link and the following
-    -- keys can be used to configure plugin behavior/loading/etc.
-    --
-    -- Use `opts = {}` to automatically pass options to a plugin's `setup()` function, forcing the plugin to be loaded.
-    --
-
-    -- Alternatively, use `config = function() ... end` for full control over the configuration.
-    -- If you prefer to call `setup` explicitly, use:
-    --    {
-    --        'lewis6991/gitsigns.nvim',
-    --        config = function()
-    --            require('gitsigns').setup({
-    --                -- Your gitsigns configuration here
-    --            })
-    --        end,
-    --    }
-
-    -- Here is a more advanced example where we pass configuration
-    -- options to `gitsigns.nvim`.
-    --
-    -- See `:help gitsigns` to understand what the configuration keys do
-    --{ -- Adds git related signs to the gutter, as well as utilities for managing changes
-    --  'lewis6991/gitsigns.nvim',
-    --  opts = {
-    --    signs = {
-    --      add = { text = '+' },
-    --      change = { text = '~' },
-    --      delete = { text = '_' },
-    --      topdelete = { text = '‾' },
-    --      changedelete = { text = '~' },
-    --    },
-    --  },
-    --},
-
-    -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
-    --
-    -- This is often very useful to both group configuration, as well as handle
-    -- lazy loading plugins that don't need to be loaded immediately at startup.
-    --
-    -- For example, in the following configuration, we use:
-    --  event = 'VimEnter'
-    --
-    -- which loads which-key before all the UI elements are loaded. Events can be
-    -- normal autocommands events (`:help autocmd-events`).
-    --
-    -- Then, because we use the `opts` key (recommended), the configuration runs
-    -- after the plugin has been loaded as `require(MODULE).setup(opts)`.
+    { -- Detect tabstop and shiftwidth automatically
+      'NMAC427/guess-indent.nvim',
+    },
 
     { -- Useful plugin to show you pending keybinds.
       'folke/which-key.nvim',
@@ -132,13 +71,6 @@ require('lazy').setup(
       },
     },
 
-    -- NOTE: Plugins can specify dependencies.
-    --
-    -- The dependencies are proper plugin specifications as well - anything
-    -- you do for a plugin at the top level, you can do for a dependency.
-    --
-    -- Use the `dependencies` key to specify the dependencies of a particular plugin
-
     { -- Fuzzy Finder (files, lsp, etc)
       'nvim-telescope/telescope.nvim',
       event = 'VimEnter',
@@ -163,37 +95,7 @@ require('lazy').setup(
         { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
       },
       config = function()
-        -- Telescope is a fuzzy finder that comes with a lot of different things that
-        -- it can fuzzy find! It's more than just a "file finder", it can search
-        -- many different aspects of Neovim, your workspace, LSP, and more!
-        --
-        -- The easiest way to use Telescope, is to start by doing something like:
-        --  :Telescope help_tags
-        --
-        -- After running this command, a window will open up and you're able to
-        -- type in the prompt window. You'll see a list of `help_tags` options and
-        -- a corresponding preview of the help.
-        --
-        -- Two important keymaps to use while in Telescope are:
-        --  - Insert mode: <c-/>
-        --  - Normal mode: ?
-        --
-        -- This opens a window that shows you all of the keymaps for the current
-        -- Telescope picker. This is really useful to discover what Telescope can
-        -- do as well as how to actually do it!
-
-        -- [[ Configure Telescope ]]
-        -- See `:help telescope` and `:help telescope.setup()`
         require('telescope').setup {
-          -- You can put your default mappings / updates / etc. in here
-          --  All the info you're looking for is in `:help telescope.setup()`
-          --
-          -- defaults = {
-          --   mappings = {
-          --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-          --   },
-          -- },
-          -- pickers = {}
           extensions = {
             ['ui-select'] = {
               require('telescope.themes').get_dropdown(),
@@ -219,17 +121,13 @@ require('lazy').setup(
         vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
         vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
-        -- Slightly advanced example of overriding default behavior and theme
         vim.keymap.set('n', '<leader>/', function()
-          -- You can pass additional configuration to Telescope to change the theme, layout, etc.
           builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
             winblend = 10,
             previewer = false,
           })
         end, { desc = '[/] Fuzzily search in current buffer' })
 
-        -- It's also possible to pass additional configuration options.
-        --  See `:help telescope.builtin.live_grep()` for information about particular keys
         vim.keymap.set('n', '<leader>s/', function()
           builtin.live_grep {
             grep_open_files = true,
@@ -237,7 +135,6 @@ require('lazy').setup(
           }
         end, { desc = '[S]earch [/] in Open Files' })
 
-        -- Shortcut for searching your Neovim configuration files
         vim.keymap.set('n', '<leader>sn', function()
           builtin.find_files { cwd = vim.fn.stdpath 'config' }
         end, { desc = '[S]earch [N]eovim files' })
@@ -245,8 +142,8 @@ require('lazy').setup(
     },
 
     -- LSP Plugins
-    {
-      -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
+
+    { -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
       -- used for completion, annotations and signatures of Neovim apis
       'folke/lazydev.nvim',
       ft = 'lua',
@@ -257,6 +154,7 @@ require('lazy').setup(
         },
       },
     },
+
     {
       -- Main LSP Configuration
       'neovim/nvim-lspconfig',
