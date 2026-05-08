@@ -1,0 +1,1 @@
+../../lua-src/lazy/treesitter.lua
