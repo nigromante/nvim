@@ -1,0 +1,1 @@
+../../lua-src/extras/lazygit.lua
