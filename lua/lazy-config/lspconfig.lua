@@ -1,1 +1,1 @@
-../../lua-src/lazy/lspconfig.lua
+../../lua-src/lazy-config/lspconfig.lua

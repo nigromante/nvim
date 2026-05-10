@@ -1,1 +1,1 @@
-../../lua-src/lazy/autocompletion.lua
+../../lua-src/lazy-config/autocompletion.lua

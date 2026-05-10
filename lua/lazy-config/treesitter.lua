@@ -1,1 +1,1 @@
-../../lua-src/lazy/treesitter.lua
+../../lua-src/lazy-config/treesitter.lua

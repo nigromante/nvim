@@ -1,1 +1,1 @@
-../../lua-src/lazy/lazydev.lua
+../../lua-src/lazy-config/lazydev.lua

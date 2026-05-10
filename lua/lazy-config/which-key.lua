@@ -1,1 +1,1 @@
-../../lua-src/lazy/which-key.lua
+../../lua-src/lazy-config/which-key.lua

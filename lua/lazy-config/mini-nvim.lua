@@ -1,1 +1,1 @@
-../../lua-src/lazy/mini-nvim.lua
+../../lua-src/lazy-config/mini-nvim.lua

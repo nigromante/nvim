@@ -1,1 +1,1 @@
-../../lua-src/lazy/telescope.lua
+../../lua-src/lazy-config/telescope.lua

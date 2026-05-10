@@ -6,3 +6,4 @@ nvim
 spell/
 lazy-lock.json
 lua-src/dev/
+lua-dev/

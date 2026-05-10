@@ -1,1 +1,1 @@
-../../lua-src/lazy/todos.lua
+../../lua-src/lazy-config/todos.lua

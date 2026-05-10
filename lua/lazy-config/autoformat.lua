@@ -1,1 +1,1 @@
-../../lua-src/lazy/autoformat.lua
+../../lua-src/lazy-config/autoformat.lua
