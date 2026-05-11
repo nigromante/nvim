@@ -1,9 +1,3 @@
--- Sync clipboard between OS and Neovim.
-vim.schedule(function()
-    vim.o.clipboard = 'unnamedplus'
-end)
-
--- functions
 function SaveFile()
     vim.lsp.buf.format()
     vim.cmd.w()

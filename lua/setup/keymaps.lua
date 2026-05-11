@@ -49,3 +49,8 @@ vim.keymap.set({ 'n', 'i' }, '<C-s>', '<Cmd>lua SaveFile()<CR>', { desc = '[S]av
 -- Line Numbers
 vim.keymap.set('n', '<leader>saa', '<Cmd>lua NumbersShow()<CR>', { desc = 'Numbers Show' })
 vim.keymap.set('n', '<leader>sad', '<Cmd>lua NumbersHide()<CR>', { desc = 'Numbers Hide' })
+
+-- Sync clipboard between OS and Neovim.
+vim.schedule(function()
+    vim.o.clipboard = 'unnamedplus'
+end)
