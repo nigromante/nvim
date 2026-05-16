@@ -38,6 +38,7 @@ vim.keymap.set('n', '<C-p>', ':bp<CR>', { noremap = true, silent = true, desc = 
 vim.keymap.set('n', '<C-n>', ':bn<CR>', { noremap = true, silent = true, desc = '[N]ext Buffer' })
 vim.keymap.set('n', '<Tab>', ':bn<CR>', { noremap = true, silent = true, desc = '[P]revious Buffer' })
 vim.keymap.set('n', '<leader>c', ':bd<CR>', { desc = 'Close Buffer' })
+vim.keymap.set('n', '<leader>C', ':%bd<CR>', { desc = 'Close All' })
 
 -- Neotree
 vim.keymap.set('n', '<C-e>', ':Neotree<CR>', { noremap = true, silent = true, desc = 'File [E]xplorer' })
